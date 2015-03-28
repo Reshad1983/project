@@ -1,0 +1,17 @@
+.grey-box{
+				background-color:yellow;
+				margin-bottom:10px;
+				height:200px;
+				font-size:2em;
+				text-align:center;
+			}
+.yellow-box{
+	background-color:yellow;
+	border-style:solid;
+	border-color:black;
+	border-width:1px;
+	margin-bottom:10px;
+}			
+.btn{
+	margin-top:10px;
+}

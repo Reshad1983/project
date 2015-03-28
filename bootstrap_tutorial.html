@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Bootstrap Tutorial</title>
+
+	<!-- Lat est compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <!-- Bootstrap -->
+    <link href="bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <style>
+    	.grey-box
+    	{
+    		background-color: gray;
+    		height: 200px;
+    		margin-bottom: 10px;
+    		font-size: 2em;
+    		text-align: center;
+    		padding: 80px;
+    	}
+		#brand-image{
+			height:30px
+		}
+		.container{
+			width:1000px !important;
+		}
+    </style>
+  </head>
+
+  <!--
+  EXTRA SMALL - .col-xs - devices less than 768px
+  SMALL - .col-sm - devices greater than or equal to 768px
+  MEDIUM - .col-md - devices greater than or equal to 992px
+  LARGE - .col-lg - devices greater than or equal to 1200px
+  -->
+
+  <body>
+  	<div class="container">
+		<nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>	
+					<a class="navbar-brand" href="http://www.zoomit.ir">
+						<img id="brand-image" alt="website-logo" src="http://fc02.deviantart.net/fs71/f/2014/045/6/a/metallic_google_chrome_icon__ico__png__by_micahpkay-d76i4jf.png"/>
+					</a>
+					<p class="navbar-text">This is plain text.</p>
+				</div>
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav">
+						<li class="active"><a href="#">Link<span class="sr-only">(Corrent)</span></a></li>
+						<li><a href="#">Link</a></li>
+						<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown<span class="caret"></span></a>
+							<ul class="dropdown-menu" role="menu">
+								<li><a href="#">Action</a></li> 
+								<li><a href="#">Camera</a></li> 
+								<li><a href="#">Lights</a></li> 
+							</ul> 
+						</li>
+					</ul>
+					<form class="navbar-form navbar-left" role="search">
+						<div class="form-group">
+							<input class="form-control" type="text" placeholder="search">
+ 						</div>
+						<button type="submit" class="btn btn-default">Submit</button>
+					</form>
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="#">Link</a></li>
+						<li class="dropdown">
+							<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+								Dropdown<span class="caret"></span>
+							</a>
+							<ul class="dropdown-menu" role="menu">
+								<li><a href="#">Action</a></li>
+								<li><a href="#">Action 2</a></li>
+								<li><a href="#">Action 3</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+  		<h1>Hello World!</h1>
+		<div class="page-header">
+			<h1>Example page header <small>Subtext for header</small></h1>
+		</div>
+		<hr>
+		
+		<hr>
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3 col-xs-12">
+				<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+					<!--Indicators-->
+					<ol class="carousel-indicators">
+						<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+						<li data-target="#carousel-example-generic" data-slide-to="1"></li>
+					</ol>
+					<!--wrapper for the slides-->
+					<div class="carousel-inner" role="listbox">
+						<div class="item active">
+							<img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iOTAwIiBoZWlnaHQ9IjUwMCIgdmlld0JveD0iMCAwIDkwMCA1MDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iOTAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0iIzc3NyIvPjxnPjx0ZXh0IHg9IjMxNy43MzQzNzUiIHk9IjI1MCIgc3R5bGU9ImZpbGw6IzU1NTtmb250LXdlaWdodDpib2xkO2ZvbnQtZmFtaWx5OkFyaWFsLCBIZWx2ZXRpY2EsIE9wZW4gU2Fucywgc2Fucy1zZXJpZiwgbW9ub3NwYWNlO2ZvbnQtc2l6ZTo0MnB0O2RvbWluYW50LWJhc2VsaW5lOmNlbnRyYWwiPkZpcnN0IHNsaWRlPC90ZXh0PjwvZz48L3N2Zz4=" />
+							<div class="carousel-caption">
+								This is the first slide.
+							</div>
+						</div>
+						<div class="item">
+							<img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iOTAwIiBoZWlnaHQ9IjUwMCIgdmlld0JveD0iMCAwIDkwMCA1MDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iOTAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0iIzc3NyIvPjxnPjx0ZXh0IHg9IjMxNy43MzQzNzUiIHk9IjI1MCIgc3R5bGU9ImZpbGw6IzU1NTtmb250LXdlaWdodDpib2xkO2ZvbnQtZmFtaWx5OkFyaWFsLCBIZWx2ZXRpY2EsIE9wZW4gU2Fucywgc2Fucy1zZXJpZiwgbW9ub3NwYWNlO2ZvbnQtc2l6ZTo0MnB0O2RvbWluYW50LWJhc2VsaW5lOmNlbnRyYWwiPkZpcnN0IHNsaWRlPC90ZXh0PjwvZz48L3N2Zz4=" />
+							<div class="carousel-caption">
+								This is the second slide.
+							</div>
+						</div>
+						This is the carousel overall info.
+					</div>
+					<!--controls-->
+					<a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+						<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+						<span class="sr-only">Previous</span>
+					</a>	
+					<a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+						<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+						<span class="sr-only">Next</span>
+					</a>
+				</div>
+			</div>
+		</div>
+		<hr>
+		<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+			<div class="panel panel-default">
+				<div class="panel-heading" role="tab" id="headingOne">
+					<h4 clss="panel-title">
+						<a href="#collapseOne" data-toggle="collapse" data-parent="#accordion" aria-expanded="true"
+						aria-controls="collapseOne">
+							Collapsible Group Item One
+							<span class="caret"></span>
+						</a>
+					</h4>
+				</div>
+				<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+					<div class="panel-body">
+						This would be body, you can put whatever you want here.
+					</div>
+				</div>
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-heading" role="tab" id="headingTwo">
+					<h4 clss="panel-title">
+						<a href="#collapseTwo" data-toggle="collapse" data-parent="#accordion" aria-expanded="false"
+						aria-controls="collapseTwo">
+							Collapsible Group Item Two
+							<span class="caret"></span>
+						</a>
+					</h4>
+				</div>
+				<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+					<div class="panel-body">
+						This would be body, you can put whatever you want here.
+					</div>
+				</div>
+			</div>	
+		<hr>
+		<div class="btn-group" data-toggle="buttons">
+			<label class="btn btn-primary active">
+				<input type="radio"  name="option" id="option1" autocomplete="off" checked />Radio 1 (preselected) 
+			</label> 
+			<label class="btn btn-primary">
+				<input type="radio" name="option" id="option2" autocomplete="off" />Radio 2
+			</label> 
+			<label class="btn btn-primary">
+				<input type="radio" name="option" id="option3" autocomplete="off" />Radio 3
+			</label> 
+		</div>
+		<hr>
+		<h3>Example page checkbox button</h3>
+		<div class="btn-group" data-toggle="buttons">
+			<label class="btn btn-primary active">
+				<input type="checkbox" autocomplete="off" checekd>Checkbox 1 (pre-checked)</input>
+			</label>
+			<label class="btn btn-primary" >
+				<input type="checkbox" autocomplete="off">Checkbox 2</input>
+			</label>
+			<label class="btn btn-primary" >
+				<input type="checkbox" autocomplete="off">Checkbox 3</input>
+			</label>
+		</div>
+		<hr>
+		<button type="button" data-toggle="button" aria-pressed="false" class="btn btn-primary" autocomplete="off">
+			Single toggle button
+		</button>
+		<hr>
+		<button type="button" id="loading" data-loading-text="loading..." class="btn btn-default" autocomplete="off">
+			Start Loading
+		</button>
+		<button type="button" id="stopLoading" class="btn btn-default" autocomplete="off">
+			Stop Loading
+		</button>
+		<hr>
+		<button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="left" title="Tooltip on left">
+			Left Tooltip
+		</button>
+		<button type="button" class="btn btn-info" data-toggle="tooltip" data-placement="right" title="Tooltip on right">
+			Right Tooltip
+		</button>
+		<button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom">
+			Bottom Tooltip
+		</button>
+		<button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Tooltip on top">
+			Top Tooltip
+		</button>
+		<hr>
+		<button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="right" data-content="This is the right side."
+			data-trigger="focus">
+			Popover to right.
+		</button>	
+		<button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="left" data-content="This is the left side.">
+			Popover to left.
+		</button>	
+		<button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="top" data-content="This is the top side.">
+			Popover to top.
+		</button>	
+		<button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="botton" data-content="This is the botton side.">
+			Popover to botton.
+		</button>		
+		<hr>
+		<div role="tabpanel" class="well">
+			<ul class="nav nav-tabs" role="tablist">
+				<li role="presentation" class="active">
+					<a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a>
+				</li>
+				
+				<li role="presentation">
+					<a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a>
+				</li>
+				
+				<li role="presentation">
+					<a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a>
+				</li>
+				
+				<li role="presentation">
+					<a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a>
+				</li>
+			</ul>
+			<div class="tab-content">
+				<div role="tabpanel" class="tab-pane active fade" id="home">
+					This is the almight homepage.
+				</div>
+				<div role="tabpanel" class="tab-pane fade" id="profile">
+					This is the almight profile.
+				</div>
+				<div role="tabpanel" class="tab-pane fade" id="messages">
+					This is the almight messages.
+				</div>
+				<div role="tabpanel" class="tab-pane fade" id="settings">
+					This is the almight settings.
+				</div>
+			</div>
+		</div>
+		<hr>
+		<div class="modal fade" id="myModal">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">
+							<span aria-hidden="true">&times;</span>
+							<span class="sr-only"></span>
+						</button>
+						<h4 class="modal-title">Modal Title</h4>
+					</div>
+					<div class="modal-body">
+						<p>Modal body &hellip;</p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						<button type="button" class="btn btn-default">Save changes</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal" id="myModal2">
+			<div class="modal-dialog modal-sm">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">
+							<span aria-hidden="true">&times;</span>
+							<span class="sr-only"></span>
+						</button>
+						<h4 class="modal-title">Modal Title</h4>
+					</div>
+					<div class="modal-body">
+						<p>Modal body &hellip;</p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						<button type="button" class="btn btn-default">Save changes</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">
+			Activate Large Modal
+		</button>
+		<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal2">
+			Activate Small Modal
+		</button>
+		<hr>
+		<div class="well well">This is a test for "well" class</div>
+		<div class="well well-lg">This is a test for "well" class</div>
+		<div class="well well-sm">This is a test for "well" class</div>
+		<div class="embed-responsive embed-responsive-16by9">
+			<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/lXBI6APcNMo"></iframe>
+		</div>
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h1 class="panel-title">Title is :)</h1>
+			</div>
+			<div class="panel-body">
+				This is the body.
+			</div>
+				<ul class="list-group">
+					<li class="list-group-item">This is an awsome list item.</li>
+					<li class="list-group-item">This is an awsome list item.</li>
+					<li class="list-group-item">This is an awsome list item.</li>
+					<li class="list-group-item">This is an awsome list item.</li>
+					<li class="list-group-item">This is an awsome list item.</li>
+				</ul>
+			<table class="table">
+				<tr>
+					<td>ID</td>
+					<td>Username</td>
+					<td>Real name</td>
+				</tr>				
+				<tr>
+					<td>000</td>
+					<td>Batman</td>
+					<td>Bruce Wayne</td>
+				</tr>				
+				<tr>
+					<td>001</td>
+					<td>Master Jedi</td>
+					<td>Yoda</td>
+				</tr>
+				
+			</table>
+			<div class="panel-footer">
+				This is the footer of panel.
+			</div>
+		</div>	
+		
+		<div class="list-group">
+			<a target="_blank" href="https://mail.google.com/mail/u/0/" class="list-group-item"><span class="badge">14</span>Messages</a>
+			<a href="#" class="list-group-item list-group-item-success">This is the secon item</a>
+			<a href="#" class="list-group-item list-group-item-info">This is the third item</a>
+			<a href="#" class="list-group-item list-group-item-warning">This is the fourth item</a>
+			<a href="#" class="list-group-item list-group-item-danger">This is the last item</a>
+		</div>
+		<div class="media">
+			<a class="media-left media-top" href="#">
+				<img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+PGRlZnMvPjxyZWN0IHdpZHRoPSI2NCIgaGVpZ2h0PSI2NCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjEzLjQ2ODc1IiB5PSIzMiIgc3R5bGU9ImZpbGw6I0FBQUFBQTtmb250LXdlaWdodDpib2xkO2ZvbnQtZmFtaWx5OkFyaWFsLCBIZWx2ZXRpY2EsIE9wZW4gU2Fucywgc2Fucy1zZXJpZiwgbW9ub3NwYWNlO2ZvbnQtc2l6ZToxMHB0O2RvbWluYW50LWJhc2VsaW5lOmNlbnRyYWwiPjY0eDY0PC90ZXh0PjwvZz48L3N2Zz4=" alt="Blog Post" />
+			</a>
+			<div class="media-body">
+				<h4 class="media-heading">Blog Media Heading</h4>
+				<p>Can the furniture roll into a literary fame?</p>
+			</div>
+		</div>
+		<div class="media">
+			<a class="media-left media-middle" href="#">
+				<img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+PGRlZnMvPjxyZWN0IHdpZHRoPSI2NCIgaGVpZ2h0PSI2NCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjEzLjQ2ODc1IiB5PSIzMiIgc3R5bGU9ImZpbGw6I0FBQUFBQTtmb250LXdlaWdodDpib2xkO2ZvbnQtZmFtaWx5OkFyaWFsLCBIZWx2ZXRpY2EsIE9wZW4gU2Fucywgc2Fucy1zZXJpZiwgbW9ub3NwYWNlO2ZvbnQtc2l6ZToxMHB0O2RvbWluYW50LWJhc2VsaW5lOmNlbnRyYWwiPjY0eDY0PC90ZXh0PjwvZz48L3N2Zz4=" alt="Blog Post" />
+			</a>
+			<div class="media-body">
+				<h4 class="media-heading">Blog Media Heading</h4>
+				<p>Can the furniture roll into a literary fame?</p>
+			</div>
+		</div>
+		<div class="media">
+			<a class="media-left media-bottom" href="#">
+				<img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+PGRlZnMvPjxyZWN0IHdpZHRoPSI2NCIgaGVpZ2h0PSI2NCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjEzLjQ2ODc1IiB5PSIzMiIgc3R5bGU9ImZpbGw6I0FBQUFBQTtmb250LXdlaWdodDpib2xkO2ZvbnQtZmFtaWx5OkFyaWFsLCBIZWx2ZXRpY2EsIE9wZW4gU2Fucywgc2Fucy1zZXJpZiwgbW9ub3NwYWNlO2ZvbnQtc2l6ZToxMHB0O2RvbWluYW50LWJhc2VsaW5lOmNlbnRyYWwiPjY0eDY0PC90ZXh0PjwvZz48L3N2Zz4=" alt="Blog Post" />
+			</a>
+			<div class="media-body">
+				<h4 class="media-heading">Blog Media Heading</h4>
+				<p>Can the furniture roll into a literary fame?</p>
+			</div>
+		</div>
+		<hr>	
+		<ul class="media-list">
+			<li class="media">
+				<a class="media-left" href="#">
+					<img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+PGRlZnMvPjxyZWN0IHdpZHRoPSI2NCIgaGVpZ2h0PSI2NCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjEzLjQ2ODc1IiB5PSIzMiIgc3R5bGU9ImZpbGw6I0FBQUFBQTtmb250LXdlaWdodDpib2xkO2ZvbnQtZmFtaWx5OkFyaWFsLCBIZWx2ZXRpY2EsIE9wZW4gU2Fucywgc2Fucy1zZXJpZiwgbW9ub3NwYWNlO2ZvbnQtc2l6ZToxMHB0O2RvbWluYW50LWJhc2VsaW5lOmNlbnRyYWwiPjY0eDY0PC90ZXh0PjwvZz48L3N2Zz4=" />
+				</a>
+				<div class="media-body">
+					<h4 class="media-heading">Media Heading 1</h4>
+					<p>A clinical chemistry flashes beneath a powered air. 
+					Each following hand dictates underneath an envelope.
+					A container misplaces a following novel. 
+					The topical synonym withdraws.</p>	
+					<div class="media">
+						<a class="media-left" href="#">
+							<img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+PGRlZnMvPjxyZWN0IHdpZHRoPSI2NCIgaGVpZ2h0PSI2NCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjEzLjQ2ODc1IiB5PSIzMiIgc3R5bGU9ImZpbGw6I0FBQUFBQTtmb250LXdlaWdodDpib2xkO2ZvbnQtZmFtaWx5OkFyaWFsLCBIZWx2ZXRpY2EsIE9wZW4gU2Fucywgc2Fucy1zZXJpZiwgbW9ub3NwYWNlO2ZvbnQtc2l6ZToxMHB0O2RvbWluYW50LWJhc2VsaW5lOmNlbnRyYWwiPjY0eDY0PC90ZXh0PjwvZz48L3N2Zz4=" alt="Blog Post" />
+						</a>
+						<div class="media-body">
+							<h4 class="media-heading">Media Heading 2</h4>
+							<p>A clinical chemistry flashes beneath a powered air. 
+							Each following hand dictates underneath an envelope.
+							A container misplaces a following novel. 
+							The topical synonym withdraws.</p>
+							<div class="media">
+								<a class="media-left" href="#">
+									<img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+PGRlZnMvPjxyZWN0IHdpZHRoPSI2NCIgaGVpZ2h0PSI2NCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjEzLjQ2ODc1IiB5PSIzMiIgc3R5bGU9ImZpbGw6I0FBQUFBQTtmb250LXdlaWdodDpib2xkO2ZvbnQtZmFtaWx5OkFyaWFsLCBIZWx2ZXRpY2EsIE9wZW4gU2Fucywgc2Fucy1zZXJpZiwgbW9ub3NwYWNlO2ZvbnQtc2l6ZToxMHB0O2RvbWluYW50LWJhc2VsaW5lOmNlbnRyYWwiPjY0eDY0PC90ZXh0PjwvZz48L3N2Zz4=" alt="Blog Post" />
+								</a>
+								<div class="media-body">
+									<h4 class="media-heading">Media Heading 3</h4>
+									<p>A clinical chemistry flashes beneath a powered air. 
+									Each following hand dictates underneath an envelope.
+									A container misplaces a following novel. 
+									The topical synonym withdraws.</p>			
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</li>
+		</ul>
+		<div class="progress">
+			<div class="progress-bar progress-bar-success" style="width:35%">
+				<span class="sr-only"> 35% Completed</span>
+			</div> 
+			<div class="progress-bar progress-bar-info progress-bar-striped" style="width:15%">
+				<span class="sr-only"> 35% Completed</span>
+			</div> 
+			<div class="progress-bar progress-bar-success" style="width:30%">
+				<span class="sr-only"> 35% Completed</span>
+			</div> 
+		</div>
+		<div class="progress">
+			<div class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:80%">
+				<span class="sr-only">80% complete.</span>
+				80% loaded
+			</div>
+		</div>
+		
+		
+		<div class="progress">
+			<div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:80%">
+				<span class="sr-only">80% complete.</span>
+				80% loaded
+			</div>
+		</div>
+		
+		
+		<div class="progress">
+			<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:80%">
+				<span class="sr-only">80% complete.</span>
+				80% loaded
+			</div>
+		</div>
+		
+		
+		<div class="progress">
+			<div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:80%">
+				<span class="sr-only">80% complete.</span>
+				80% loaded
+			</div>
+		</div>
+		
+		<div class="alert alert-success alert-dismissable" role="alert">
+			Well done, you have created an alert. <a href="#" class="alert-link">Click me</a>
+			<button type="button" class="close" data-dismiss="alert">
+				<span aria-hidden="true">&times;</span>
+				<span class="sr-only">Close</span>
+			</button>
+		</div>
+		<div class="alert alert-info" role="alert">Well done, you have created an alert info</div>
+		<div class="alert alert-warning" role="alert">Well done, you have created an alert warning</div>
+		<div class="alert alert-danger" role="alert">Well done, you have created an alert danger</div>
+		
+		<span class="label label-default">Default</span>
+		<span class="label label-primary">Primary</span>
+		<span class="label label-success">Success</span>
+		<span class="label label-info">Info</span>
+		<span class="label label-warning">Warning</span>
+		<span class="label label-danger">Danger</span>
+		<!--<ol class="breadcrumb">
+			<li><a href="#">C</a></li>
+			<li><a href="#">Program files</a></li>
+			<li><a href="#" class="active">Sonar systems</a></li>
+		</ol>-->
+		<nav>
+			<ul class="pagination pagination-lg">
+				<li><a href="#"><span aria-hidden="true">&laquo;</span><span class="sr-only">Previous</span></a></li>
+				<li class="active"><a href="#">1</a></li>
+				<li ><a href="#">2</a></li>
+				<li><a href="#">3</a></li>
+				<li><a href="#">4</a></li>
+				<li><a href="#">5</a></li>
+				<li ><a href="#"><span aria-hidden="true">&raquo;</span><span class="sr-only">Next</span></a></li>
+			</ul>
+		</nav>
+		<nav>
+			<ul class="pager">
+				<li class="previous"><a href="#"><span aria-hidden="true">&larr;</span>Previous</a></li>
+				<li class="next"><a href="#">Next<span aria-hidden="true">&rarr;</span></a></li>
+			</ul>
+		</nav>
+		
+		
+  		<div class="input-group" style="max-width:400px">
+  			<div class="input-group-btn">
+  				<button type="button" class="btn btn-default">Dropdown</button>
+  				<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+  					<span class="caret"></span>
+  					<span class="sr-only"></span>
+  				</button>
+  				<ul class="dropdown-menu" role="menu">
+  					<li><a href="#">£</a></li>
+  					<li><a href="#">$</a></li>
+  				</ul>
+  			</div>
+  			<input type="text" class="form-control" placeholder="Username" />
+  		</div>
+
+  		<br />
+
+  		<div class="input-group" style="max-width:400px">
+  			<input type="text" class="form-control"/>
+  			<span class="input-group-addon">.00</span>
+  		</div>
+
+  		<br />
+
+  		<div class="input-group" style="max-width:400px">
+  			<span class="input-group-addon">$</span>
+  			<input type="text" class="form-control" />
+  			<span class="input-group-addon">.00</span>
+  		</div>
+		<a href="#">Messages<span class="badge"></span></a>
+		<button class="btn btn-primary" type="button">Email
+			<span class="badge"></span>
+		</button>
+  	</div>
+
+    <script src="js/jquery.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+		<script src="js/prettify.js"></script>
+		<script src="js/bootstrap-datepicker.js"></script>
+		<script src="bootstrap.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+		<script class="cssdeck" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		<script class="cssdeck" src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
+	<script>
+		$("#loading").on('click', function(){
+			$(this).button('loading').delay();
+		});
+		$("#stopLoading").on('click', function(){
+			$("#loading").button('reset');
+		});
+		$(function(){
+			$("[data-toggle='tooltip']").tooltip();
+			$("[data-toggle='popover']").popover();
+		});
+	</script>
+  </body>
+</html>
