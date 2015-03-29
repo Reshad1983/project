@@ -2,7 +2,7 @@
 <html>
     <head>
             <meta charset="utf-8">
-            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
             <meta name="viewport" content="width=device-width, initial-scale=1">
             <!-- Lat est compiled and minified CSS -->
             <!-- Lat est compiled and minified CSS -->
@@ -19,20 +19,26 @@ include('template.php');
 if ((isset($_POST['username'])) and (isset($_POST['password']))) {
     $user     = "'" . $_POST['username'] . "'";
     $password = "'" . $_POST['password'] . "'";
-    $result   = mysql_query("SELECT *
-                FROM User
-                WHERE userName = $user 
-                AND password = $password");
+    $result   = mysql_query("SELECT  user.user_id, user.username, user.password
+				FROM user
+                WHERE user.username = $user 
+                AND user.password = $password");
     if (!$result) {
+		echo 'here';
         echo mysql_error();
     }
     $row = mysql_fetch_assoc($result);
-    if (($_POST['username'] === $row['username']) and ($_POST['password'] === $row['password'])) {
+	echo "'".$row['username']."'";
+	echo "'".$row['password']."'";
+    if (($_POST['username'] === $row['username']) and ($_POST['password'] === $row['password']))
+	{
         $_SESSION['user_id']  = $row['user_id'];
         $_SESSION['username'] = $row['username'];
-        $_SESSION['password'] = $row['paseword'];
+        $_SESSION['password'] = $row['password'];
         $_SESSION['timeout']  = time();
-    } else {
+    } 
+	else
+	{
         echo "<h1 style='color:red'>Login failed, Please try again<h1>";
     }
 }
@@ -118,11 +124,11 @@ if (!isset($_SESSION['user_id'])) {
 					<form role="form" action="index.php" method="POST">
                 		<div class="form-group">
                 			 <label for="inputUsername">Username</label>
-                       		 <input type="text" id="inputUsername" class="form-control" placeholder="User Name" name="username" value="" required autofocus>
+                       		 <input type="text" id="inputUsername" class="form-control" placeholder="User Name" name="username" required autofocus>
                 		</div>
                 		<div class="form-group">
                 			<label for="inputPassword">Password</label>
-                        	<input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password" value="" required>
+                        	<input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password" required>
                 		</div>
                 		<div class="form-group">
                 			 <button class="btn btn-md btn-primary btn-block" type="submit">Sign in</button>	

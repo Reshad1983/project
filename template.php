@@ -2,24 +2,49 @@
 <?php
 session_name("Webbshop");
 session_start();
-mysql_connect("mysql.freehostingnoads.net", "u319600295_resah", "146379re") or die(mysql_error());
-mysql_select_db("u319600295_test");
+/*
+
+try 
+{
+    $dbh = new PDO('mysql:host=localhost;dbname=bagcompany', 'root', '146379re');
+} 
+catch (PDOException $e) 
+{
+    print "Error!: " . $e->getMessage() . "<br/>";
+    die();
+}*/
+mysql_connect('localhost:3307', 'root', '') or die(mysql_error());
+mysql_select_db('reshaddatabase');
+  /*
+  $conn_str = mysql_connect('localhost', 'root', '146379re');
+  if (!$conn_str) {
+    die('Not connected  to the database: ' . mysql_error());
+  }
+
+  $db_selected = mysql_select_db('bagcompany', $conn_str);
+  if (!$db_selected) {
+    die ("Can\'t use your_database_name : " . mysql_error());
+  }
+  */
+
+
+
 $content = <<<END
-       <div>
-            <!-- Static navbar -->
-            <nav class="navbar navbar-default">
-            <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="index.php">House Economy</a>
-            </div>
-            <div id="navbar" class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
+   <div>
+		<!-- Static navbar -->
+		<nav class="navbar navbar-default">
+		<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="index.php">House Economy</a>
+		</div>
+		<div id="navbar" class="navbar-collapse collapse">
+			<ul class="nav navbar-nav">
                  
 END;
 $url     = basename($_SERVER['REQUEST_URI'], '?' . $_SERVER['QUERY_STRING']);
