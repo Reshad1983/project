@@ -18,11 +18,23 @@
 	if(isset($_POST['name']) && isset($_SESSION['user_id'])){
 		$name = "'" . $_POST['name'] . "'";	
 		$price = $_POST['price'];	
-		$description = "'" . $_POST['description'] . "'";		$query = <<<END
+		$description = "'" . $_POST['description'] . "'";	
+		$query = <<<END
 		INSERT INTO products (name, price, description) 
-		VALUES($name, $price, $description)END;
-		try		{			mysql_query($query);			$content =<<<END				<hr>				<div id="temp">					<h3 class="text-center">Ny produkt har lagts till.</h3>				</div>				<hr>END;			echo $content;
-		}		catch(PDOException $ex)
+		VALUES($name, $price, $description)
+END;
+		try		{
+			mysql_query($query);			
+		$content =<<<END
+		<hr>
+		<div id="temp">
+		<h3 class="text-center">Ny produkt har lagts till.</h3>
+		</div>
+		<hr>
+END;
+		echo $content;
+		}		
+		catch(PDOException $ex)
 		{
 			die(mysql_error());
 		}
@@ -34,6 +46,12 @@
 			<form method="post" action="add_products.php" role="form">
 				<div class="form-group">
 					<input class="form-control" type="text" name="name" placeholder="Produktnamn">
+				</div>
+				<div class="form-group">
+					<input class="form-control" type="text" name="material" placeholder="material">
+				</div>
+				<div class="form-group">
+					<input class="form-control" type="text" name="size" placeholder="size">
 				</div>
 				<div class="form-group">
 					<input class="form-control" type="text" name="price" placeholder="Pris">

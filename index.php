@@ -15,21 +15,28 @@
     <body class="container">
 <?php
 include('template.php');
-
-if ((isset($_POST['username'])) and (isset($_POST['password']))) {
+function getFruit($conn, $username) {
+    $sql = 'SELECT user_id, username, password 
+	FROM user 
+	';
+    foreach ($conn->query($sql) as $row) {
+        print $row['name'] . "\t";
+        print $row['color'] . "\t";
+        print $row['calories'] . "\n";
+    }
+}
+/*
+if ((isset($_POST['username'])) and (isset($_POST['password']))) 
+{
     $user     = "'" . $_POST['username'] . "'";
     $password = "'" . $_POST['password'] . "'";
-    $result   = mysql_query("SELECT  user.user_id, user.username, user.password
+    $sql  = "SELECT  user.user_id, user.username, user.password
 				FROM user
                 WHERE user.username = $user 
-                AND user.password = $password");
-    if (!$result) {
-		echo 'here';
-        echo mysql_error();
-    }
-    $row = mysql_fetch_assoc($result);
-	echo "'".$row['username']."'";
-	echo "'".$row['password']."'";
+                AND user.password = $password";
+	$sth = $dbh->prepare($sql);
+	$sth->execute();
+	$row = $sth->fetch(PDO::FETCH_ASSOC);
     if (($_POST['username'] === $row['username']) and ($_POST['password'] === $row['password']))
 	{
         $_SESSION['user_id']  = $row['user_id'];
@@ -42,9 +49,7 @@ if ((isset($_POST['username'])) and (isset($_POST['password']))) {
         echo "<h1 style='color:red'>Login failed, Please try again<h1>";
     }
 }
-if (!isset($_SESSION['user_id'])) {
-
-}
+*/
     $content = <<<END
 <div class="row">
     <div class="col-sm-2" style="background-color:lavender;">.col-sm-4</div>
@@ -67,7 +72,7 @@ if (!isset($_SESSION['user_id'])) {
 
                         <div class="item active">
 
-                            <img src="img/bild1.jpg" />
+                            <img src="img/bild1.jpg" width="460" height="345"/>
 
                             <div class="carousel-caption">
 
@@ -79,7 +84,7 @@ if (!isset($_SESSION['user_id'])) {
 
                         <div class="item">
 
-                            <img src="img/bild1.jpg" />
+                            <img src="img/bild1.jpg" width="460" height="345"/>
 
                             <div class="carousel-caption">
 
@@ -114,14 +119,18 @@ if (!isset($_SESSION['user_id'])) {
                 </div>
     </div>
     <div class="col-sm-3" style="background-color:lavender;">
-        <div class="well">
+END;
+	
+	if (!isset($_SESSION['user_id'])) {
+		$content .= <<<END
+		        <div class="well">
             <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
                 <li class="active"><a href="#red" data-toggle="tab">Login</a></li>
                 <li><a href="#orange" data-toggle="tab">Register</a></li>
             </ul>
             <div id="my-tab-content" class="tab-content">
                 <div class="tab-pane active" id="red">
-					<form role="form" action="index.php" method="POST">
+					<form role="form" class="form-signin" action="login.php" method="POST">
                 		<div class="form-group">
                 			 <label for="inputUsername">Username</label>
                        		 <input type="text" id="inputUsername" class="form-control" placeholder="User Name" name="username" required autofocus>
@@ -136,24 +145,33 @@ if (!isset($_SESSION['user_id'])) {
                     </form>
                 </div>
                 <hr>
-                <div class="tab-pane" id="orange">       
-                    <form class="form-signin" role="form" action="register.php" method="POST">
-                        <h2>Register here</h2>
-                        <label for="inputUsername" class="sr-only">Username</label>
-                        <input type="text" id="inputUsername" class="form-control" placeholder="User Name" name="username" value="" required autofocus>
-                        <label for="inputPassword" class="sr-only">Password</label>
-                        <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password" value="" required>
-                        <label for="inputEmail" class="sr-only">Email</label>
-                        <input type="text" id="inputEmail" class="form-control" placeholder="Email" name="email" value="">
-                        <label for="inputFname" class="sr-only">First name</label>
-                        <input type="text" id="inputFname" class="form-control" placeholder="First name" name="fname" value="">
-                        <label for="inputLname" class="sr-only">Last name§        </label>
-                        <input type="text" id="inputLname" class="form-control" placeholder="Last name" value="" name="lname">
-                        <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
-                    </form>
+                <div class="tab-pane" id="orange"> 
+					<form role="form" class="form-signin" action="register.php" method="POST">
+                		<div class="form-group">
+                       		 <input type="text" id="inputUsername" class="form-control" placeholder="User Name" value="" name="username" required autofocus>
+                		</div>
+                		<div class="form-group">
+                        	<input type="password" id="inputPassword" class="form-control" placeholder="password" value="" name="password" required>
+                		</div>
+						<div class="form-group">
+                       		 <input type="text" class="form-control" name="fname" placeholder="First name" value="" >
+                		</div>
+						<div class="form-group">
+                       		 <input type="text" class="form-control" placeholder="Family Name" value="" name="lname">
+                		</div>
+						<div class="form-group">
+                       		 <input type="text"  class="form-control" name="email" placeholder="Email" value="">
+                		</div>
+                		<div class="form-group">
+                			 <button class="btn btn-md btn-primary btn-block" type="submit">Register</button>	
+                		</div>
+                    </form>				
                 </div>
             </div>
         </div><!--end of well class--> 
+END;
+	}
+	$content .= <<<END
     </div><!--End of col3-->
 </div>
         

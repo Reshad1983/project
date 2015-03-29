@@ -2,15 +2,29 @@
 <link href="signin.css" rel="stylesheet">
 </style>
 <?php
-include("navigator.php");
+include("template.php");
 if(isset($_POST['username'])){
 	$user = "'" . $_POST['username'] . "'";
 	$password = "'" . $_POST['password'] . "'";
- 	$query = <<<END
-	select username , password, id from users
-		Where username = $user
-		AND password = $password
-END;
+ 	$sql  = "SELECT  user.user_id, user.username, user.password
+				FROM user
+                WHERE user.username = $user 
+                AND user.password = $password";
+	$sth = $dbh->prepare($sql);
+	$sth->execute();
+	$row = $sth->fetch(PDO::FETCH_ASSOC);
+    if (($_POST['username'] === $row['username']) and ($_POST['password'] === $row['password']))
+	{
+        $_SESSION['user_id']  = $row['user_id'];
+        $_SESSION['username'] = $row['username'];
+        $_SESSION['password'] = $row['password'];
+        $_SESSION['timeout']  = time();
+		header('Location:index.php');
+    } 
+	else
+	{
+        echo "<h1 style='color:red'>Login failed, Please try again<h1>";
+    }
 $res = $mysqli -> query($query);
 	if($res -> num_rows > 0){
 		$row = $res -> fetch_object();

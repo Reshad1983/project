@@ -2,20 +2,20 @@
 <?php
 session_name("Webbshop");
 session_start();
-/*
 
 try 
 {
-    $dbh = new PDO('mysql:host=localhost;dbname=bagcompany', 'root', '146379re');
+    $dbh = new PDO('mysql:host=localhost:3307;dbname=reshaddatabase', 'root', '');
+	$dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } 
 catch (PDOException $e) 
 {
     print "Error!: " . $e->getMessage() . "<br/>";
     die();
-}*/
+}/*
 mysql_connect('localhost:3307', 'root', '') or die(mysql_error());
 mysql_select_db('reshaddatabase');
-  /*
+  
   $conn_str = mysql_connect('localhost', 'root', '146379re');
   if (!$conn_str) {
     die('Not connected  to the database: ' . mysql_error());
