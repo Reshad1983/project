@@ -9,10 +9,13 @@
             <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
             <!-- Custom styles for this template -->
             <link href="signin.css" rel="stylesheet">
-            <link rel="icon" href="http://getbootstrap.com/favicon.ico">    
+            <link rel="icon" href="http://getbootstrap.com/favicon.ico"> 
+			<style>
+				background-color: #C9C9C9
+			</style>
             <title>Login</title>
     </head>
-    <body class="container">
+    <body class="container"> 
 <?php
 include('template.php');
 		$_SESSION['location'] = 'index.php';

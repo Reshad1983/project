@@ -14,7 +14,7 @@
 	<body class="container">
 <?php
 	include('template.php');
-	$_SESSION]['location'] = 'contact.php';
+	$_SESSION['location'] = 'contact.php';
 	$content = <<<END
 	<div class="row">
 		<div class="col-md-6">
