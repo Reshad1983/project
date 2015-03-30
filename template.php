@@ -12,23 +12,8 @@ catch (PDOException $e)
 {
     print "Error!: " . $e->getMessage() . "<br/>";
     die();
-}/*
-mysql_connect('localhost:3307', 'root', '') or die(mysql_error());
-mysql_select_db('reshaddatabase');
-  
-  $conn_str = mysql_connect('localhost', 'root', '146379re');
-  if (!$conn_str) {
-    die('Not connected  to the database: ' . mysql_error());
-  }
-
-  $db_selected = mysql_select_db('bagcompany', $conn_str);
-  if (!$db_selected) {
-    die ("Can\'t use your_database_name : " . mysql_error());
-  }
-  */
-
-
-
+}
+$url     = basename($_SERVER['REQUEST_URI'], '?' . $_SERVER['QUERY_STRING']);
 $content = <<<END
    <div>
 		<!-- Static navbar -->
@@ -45,58 +30,66 @@ $content = <<<END
 		</div>
 		<div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
-                 
 END;
-$url     = basename($_SERVER['REQUEST_URI'], '?' . $_SERVER['QUERY_STRING']);
+    if (strcmp("index.php", $url) === 0) {
+        $content .= <<<END
+           <li class="active"><a href="index.php">Home</a></li>
+END;
+    } else {
+        $content .= <<<END
+           <li><a href="index.php">Home</a></li>
+END;
+    }
+	if (strcmp("product.php", $url) === 0) {
+        $content .= <<<END
+        <li class="active"><a href="product.php">Products</a></li> 
+END;
+    } else {
+        $content .= <<<END
+        <li><a href="product.php">Products</a></li>  
+END;
+    }
+	if (strcmp("about.php", $url) === 0)
+	{
+		$content .= <<<END
+		<li class="active"><a href="about.php">Contact us</a></li>
+END;
+	}
+	else
+	{
+		$content .= <<<END
+		<li><a href="about.php">Contact us</a></li>  
+END;
+	}
 if (isset($_SESSION['user_id'])) {
-    if (strcmp("product.php", $url) === 0) {
-        $content .= <<<END
-           <li class="active"><a href="product.php">Produkter</a></li> 
+	if(($_SESSION['username'] === 'admin') AND $_SESSION['username'] === 'password')
+	{
+	    if (strcmp("add_products.php", $url) === 0) 
+		{
+			$content .= <<<END
+			<li  class="active"><a href="add_products.php">Add new product</a></li>
 END;
-    } else {
-        $content .= <<<END
-           <li><a href="product.php">Produkter</a></li>  
-END;
-    }
-    if (strcmp("about.php", $url) === 0) {
-        $content .= <<<END
-       <li class="active"><a href="about.php">About</a></li>
-END;
-    } else {
-        $content .= <<<END
-       <li><a href="about.php">About</a></li>  
-END;
-    }
-    if (strcmp("add_products.php", $url) === 0) {
-        $content .= <<<END
-           <li  class="active"><a href="add_products.php">Add new product</a></li>
-END;
-    } else {
-        $content .= <<<END
+		}
+		else 
+		{
+			$content .= <<<END
            <li><a href="add_products.php">Add new product</a></li>
 END;
-    }
-    if (strcmp("main.php", $url) === 0) {
-        $content .= <<<END
-           <li class="active"><a href="main.php">Home</a></li>
-END;
-    } else {
-        $content .= <<<END
-           <li><a href="main.php">Home</a></li>
-END;
-    }
+		}
+		
+	}
     $content .= <<<END
        <li><a href="logout.php">Logout</a></li>
         <p>Inloggad som <a href="user_detail.php?id={$_SESSION['user_id']}">{$_SESSION['username']}</a></p>
 END;
 } else {
-    if (strcmp("index.php", $url) === 0) {
+    if (strcmp("login.php", $url) === 0) {
         $content .= <<<END
-            <li class="active"><a href="index.php">Logga in</a></li>
+            <li class="active"><a href="login.php">Logga in</a></li>
 END;
     } else {
         $content .= <<<END
-           <li><a href="index.php">Logga in</a></li>
+           <li><a href="login.php">Logga in</a></li>
 END;
     }
 }

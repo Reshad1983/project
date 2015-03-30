@@ -15,17 +15,6 @@
     <body class="container">
 <?php
 include('template.php');
-function getFruit($conn, $username) {
-    $sql = 'SELECT user_id, username, password 
-	FROM user 
-	';
-    foreach ($conn->query($sql) as $row) {
-        print $row['name'] . "\t";
-        print $row['color'] . "\t";
-        print $row['calories'] . "\n";
-    }
-}
-
     $content = <<<END
 <div class="row">
     <div class="col-sm-2" style="background-color:lavender;">.col-sm-4</div>

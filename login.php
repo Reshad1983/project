@@ -22,9 +22,9 @@ if(isset($_POST['username']))
 				FROM user
                 WHERE user.username = $user 
                 AND user.password = $password";
-	$sth = $dbh->prepare($sql);
-	$sth->execute();
-	$row = $sth->fetch(PDO::FETCH_ASSOC);
+	$sth = $dbh -> prepare($sql);
+	$sth -> execute();
+	$row = $sth -> fetch(PDO::FETCH_ASSOC);
     if (($_POST['username'] === $row['username']) and ($_POST['password'] === $row['password']))
 	{
         $_SESSION['user_id']  = $row['user_id'];
@@ -33,52 +33,52 @@ if(isset($_POST['username']))
         $_SESSION['timeout']  = time();
 		header('Location:index.php');
     } 
-		$content .= <<<END
-			<div class="col-md-4 col-md-offset-2">
-				<div class="row well">	
-					<form role="form" class="form-signin" action="login.php" method="POST">	
-						<h2>Sign in</h2>
-						<div class="form-group">
-							 <label for="inputUsername">Username</label>
-							 <input type="text" id="inputUsername" class="form-control" placeholder="User Name" name="username" required autofocus>
-						</div>
-						<div class="form-group">
-							<label for="inputPassword">Password</label>
-							<input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password" required>
-						</div>
-						<div class="form-group">
-							 <button class="btn btn-md btn-primary btn-block" type="submit">Sign in</button>	
-						</div>
-					</form>	
-				</div><!--class of well-->
-			</div>
-			<div class="col-md-4">
-			<div class="row well">	
-					<form role="form" class="form-signin" action="register.php" method="POST">
-						<h2>Register</h2>
-						<div class="form-group">
-							<label for="inputUsername">Username</label>
-							<input type="text" id="inputUsername" class="form-control" placeholder="User Name" value="" name="username" required autofocus>
-						</div>
-						<div class="form-group">
-							<label for="inputPassword">Password</label>
-							<input type="password" id="inputPassword" class="form-control" placeholder="password" value="" name="password" required>
-						</div>
-						<div class="form-group">
-							 <input type="text" class="form-control" name="fname" placeholder="First name" value="" >
-						</div>
-						<div class="form-group">
-							 <input type="text" class="form-control" placeholder="Family Name" value="" name="lname">
-						</div>
-						<div class="form-group">
-							 <input type="text"  class="form-control" name="email" placeholder="Email" value="">
-						</div>
-						<div class="form-group">
-							 <button class="btn btn-md btn-primary btn-block" type="submit">Register</button>	
-						</div>
-					</form>
-				</div><!--class of well-->
+		$content = <<<END
+		<div class = 'row'>
+			<div class="well col-md-4 col-md-offset-1">
+				<form role="form" class="form-signin" action="login.php" method="POST">	
+					<h2>Sign in</h2>
+					<div class="form-group">
+						 <label for="inputUsername">Username</label>
+						 <input type="text" id="inputUsername" class="form-control" placeholder="User Name" name="username" required autofocus>
+					</div>
+					<div class="form-group">
+						<label for="inputPassword">Password</label>
+						<input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password" required>
+					</div>
+					<div class="form-group">
+						 <button class="btn btn-md btn-primary btn-block" type="submit">Sign in</button>	
+					</div>
+				</form>
+				<h2 class="alert alert-danger" id="loginFailed">Login failed, wrong username or password</h2> 
+			</div><!--end of col 4-->	
+			<div class="well col-md-4 col-sm-offset-1">
+				<form role="form" class="form-signin" action="register.php" method="POST">
+					<h2>Register</h2>
+					<div class="form-group">
+						<label for="inputUsername">Username</label>
+						<input type="text" id="inputUsername" class="form-control" placeholder="User Name" value="" name="username" required autofocus>
+					</div>
+					<div class="form-group">
+						<label for="inputPassword">Password</label>
+						<input type="password" id="inputPassword" class="form-control" placeholder="password" value="" name="password" required>
+					</div>
+					<div class="form-group">
+						 <input type="text" class="form-control" name="fname" placeholder="First name" value="" >
+					</div>
+					<div class="form-group">
+						 <input type="text" class="form-control" placeholder="Family Name" value="" name="lname">
+					</div>
+					<div class="form-group">
+						 <input type="text"  class="form-control" name="email" placeholder="Email" value="">
+					</div>
+					<div class="form-group">
+						 <button class="btn btn-md btn-primary btn-block" type="submit">Register</button>	
+					</div>
+				</form>
 			</div>		
+		</div>
+			
 END;
 	echo $content;
 }	

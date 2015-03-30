@@ -17,7 +17,7 @@
 	$content = <<<END
 	<body class="container">		
 		<h2>Skicka ett medelande</h2>
-		<form action="send.php" method = "post" role="form">
+		<form class="form-signin" action="send.php" method = "post" role="form">
 			<div class="form-group">
 				<input type="text" name="name" class="form-control" placeholder="Name">
 			</div>
@@ -25,7 +25,7 @@
 				<textarea name="msg" class="form-control" placeholder="Message"></textarea>
 			</div>
 			<div class="form-group text-center">
-				<button type="submit" class="btn btn-primary">Skicka</button>
+				<button type="submit" class="btn btn-lg block btn-primary">Skicka</button>
 			</div>	
 		</form>
 	</body>	
