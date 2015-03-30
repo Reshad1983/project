@@ -5,5 +5,7 @@ $(document).ready(function() {
 	});
 	$("#homeInsert").click(function(){
 		window.location.replace("add_products.php");
-	});			$("#temp").fadeOut(1500);
+	});			
+	$("#temp").fadeOut(1500);
+	$("#loginFailed").fadeOut(1500);
 });
