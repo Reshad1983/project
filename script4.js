@@ -7,5 +7,5 @@ $(document).ready(function() {
 		window.location.replace("add_products.php");
 	});			
 	$("#temp").fadeOut(1500);
-	$("#loginFailed").fadeOut(1500);
+	$("#loginFailed").fadeOut(2500);
 });

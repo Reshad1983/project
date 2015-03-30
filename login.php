@@ -33,57 +33,146 @@ if(isset($_POST['username']))
         $_SESSION['timeout']  = time();
 		header('Location:index.php');
     } 
-		$content = <<<END
-		<div class = 'row'>
-			<div class="well col-md-4 col-md-offset-1">
-				<form role="form" class="form-signin" action="login.php" method="POST">	
-					<h2>Sign in</h2>
-					<div class="form-group">
-						 <label for="inputUsername">Username</label>
-						 <input type="text" id="inputUsername" class="form-control" placeholder="User Name" name="username" required autofocus>
-					</div>
-					<div class="form-group">
-						<label for="inputPassword">Password</label>
-						<input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password" required>
-					</div>
-					<div class="form-group">
-						 <button class="btn btn-md btn-primary btn-block" type="submit">Sign in</button>	
-					</div>
-				</form>
-				<h2 class="alert alert-danger" id="loginFailed">Login failed, wrong username or password</h2> 
-			</div><!--end of col 4-->	
-			<div class="well col-md-4 col-sm-offset-1">
-				<form role="form" class="form-signin" action="register.php" method="POST">
-					<h2>Register</h2>
-					<div class="form-group">
-						<label for="inputUsername">Username</label>
-						<input type="text" id="inputUsername" class="form-control" placeholder="User Name" value="" name="username" required autofocus>
-					</div>
-					<div class="form-group">
-						<label for="inputPassword">Password</label>
-						<input type="password" id="inputPassword" class="form-control" placeholder="password" value="" name="password" required>
-					</div>
-					<div class="form-group">
-						 <input type="text" class="form-control" name="fname" placeholder="First name" value="" >
-					</div>
-					<div class="form-group">
-						 <input type="text" class="form-control" placeholder="Family Name" value="" name="lname">
-					</div>
-					<div class="form-group">
-						 <input type="text"  class="form-control" name="email" placeholder="Email" value="">
-					</div>
-					<div class="form-group">
-						 <button class="btn btn-md btn-primary btn-block" type="submit">Register</button>	
-					</div>
-				</form>
-			</div>		
-		</div>
-			
-END;
-	echo $content;
+	else
+	{
+		$failed = 1;
+	}
+}
+else
+{
+	$failed = 0;	
 }	
+
+		$content = <<<END
+<div class="row">
+	<div class="col-md-6 col-md-offset-3">
+		<div class="well">
+END;
+	if(isset($_GET['id']))
+	{
+		$content .= <<<END
+		<ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
+			<li><a href="#loginTab" data-toggle="tab">Login</a></li>
+			<li class="active"><a href="#registerTab" data-toggle="tab">Register</a></li>
+		</ul>	
+			<div id="my-tab-content" class="tab-content">
+				<div class="tab-pane" id="loginTab">
+					<form class="form-signin" role="form" action="index.php" method="POST">
+							<h2 class="form-signin-heading">Please sign in</h2>
+							<div class="form-group">
+								<label for="inputEmail">Email address</label>
+								<input type="text" id="inputEmail" class="form-control" placeholder="User Name" name="username"required autofocus>
+							</div>
+							<div class="form-group">
+								<label for="inputPassword">Password</label>
+								<input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password" required>
+							</div>	
+							<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+					</form>
+END;
+		if($failed === 1)
+		{
+			$content .= <<<END
+			<h2 class="alert alert-danger" id="loginFailed">Login failed, wrong username or password</h2>
+END;
+		}	
+		$content .= <<<END
+				</div>
+				<div class="tab-pane active" id="registerTab">
+					<form class="form-signin" role="form" action="register.php" method="POST">
+							<h2>Register </h2>
+							<div class="form-group">
+								<input type="text" id="inputUsername" class="form-control" placeholder="User Name" name="username" value="" required autofocus>
+							</div>
+							<div class="form-group">
+								<label for="inputPassword" class="sr-only">Password</label>
+							<div>
+							<div class="form-group">
+								<input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password" value="" required>
+							</div>
+							<div class="form-group">
+								<input type="text" id="inputEmail" class="form-control" placeholder="Email" name="email" value="">
+							</div>			
+							<div class="form-group">
+								<input type="text" id="inputFname" class="form-control" placeholder="First name" name="fname" value="">
+							</div>
+							<div class="form-group">
+							<div class="form-group">
+							<div class="form-group">
+								<input type="text" id="inputLname" class="form-control" placeholder="Last name" value="" name="lname">
+							</div>	
+							<button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
+					</form>
+				</div>
+			</div>
+END;
+	}
+	else
+	{
+		$content .= <<<END
+		<ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
+			<li class="active"><a href="#loginTab" data-toggle="tab">Login</a></li>
+			<li><a href="#registerTab" data-toggle="tab">Register</a></li>
+		</ul>
+			<div id="my-tab-content" class="tab-content">
+				<div class="tab-pane active" id="loginTab">
+					<form class="form-signin" role="form" action="index.php" method="POST">
+							<h2 class="form-signin-heading">Please sign in</h2>
+							<div class="form-group">
+								<label for="inputEmail">Email address</label>
+								<input type="text" id="inputEmail" class="form-control" placeholder="User Name" name="username"required autofocus>
+							</div>
+							<div class="form-group">
+								<label for="inputPassword">Password</label>
+								<input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password" required>
+							</div>	
+							<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+					</form>
+END;
+		if($failed === 1)
+		{
+			$content .= <<<END
+			<h2 class="alert alert-danger" id="loginFailed">Login failed, wrong username or password</h2>
+END;
+		}	
+		$content .= <<<END
+				</div>
+				<div class="tab-pane" id="registerTab">
+					<form class="form-signin" role="form" action="register.php" method="POST">
+							<h2>Register </h2>
+							<div class="form-group">
+								<input type="text" id="inputUsername" class="form-control" placeholder="User Name" name="username" value="" required autofocus>
+							</div>
+							<div class="form-group">
+								<label for="inputPassword" class="sr-only">Password</label>
+							<div>
+							<div class="form-group">
+								<input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password" value="" required>
+							</div>
+							<div class="form-group">
+								<input type="text" id="inputEmail" class="form-control" placeholder="Email" name="email" value="">
+							</div>			
+							<div class="form-group">
+								<input type="text" id="inputFname" class="form-control" placeholder="First name" name="fname" value="">
+							</div>
+							<div class="form-group">
+							<div class="form-group">
+							<div class="form-group">
+								<input type="text" id="inputLname" class="form-control" placeholder="Last name" value="" name="lname">
+							</div>	
+							<button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
+					</form>
+				</div>
+			</div>
+END;
+	}	
+	$content .= <<<END
+		</div> 
+	</div>		
+</div>
+END;
+echo $content;
 ?>	
-	</body>
 		<!-- Latest compiled and minified JavaScript -->
 		<script src="js/jquery.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>

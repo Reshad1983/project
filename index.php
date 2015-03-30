@@ -102,6 +102,7 @@ END;
 					 <button class="btn btn-md btn-primary btn-block" type="submit">Sign in</button>	
 				</div>
 			</form>
+				<a href="login.php?id=1"><button class="btn btn-primary">Register</button></a>
 			<hr>
         </div><!--end of well class--> 
 END;
