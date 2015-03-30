@@ -15,6 +15,7 @@
     <body class="container">
 <?php
 include('template.php');
+		$_SESSION['location'] = 'index.php';
     $content = <<<END
 <div class="container">
 <div class="row">

@@ -14,21 +14,27 @@
 	<body class="container">
 <?php
 	include('template.php');
+	$_SESSION]['location'] = 'contact.php';
 	$content = <<<END
-	<body class="container">		
-		<h2>Skicka ett medelande</h2>
-		<form class="form-signin" action="send.php" method = "post" role="form">
-			<div class="form-group">
-				<input type="text" name="name" class="form-control" placeholder="Name">
-			</div>
-			<div class="form-group">
-				<textarea name="msg" class="form-control" placeholder="Message"></textarea>
-			</div>
-			<div class="form-group text-center">
-				<button type="submit" class="btn btn-lg block btn-primary">Skicka</button>
-			</div>	
-		</form>
-	</body>	
+	<div class="row">
+		<div class="col-md-6">
+			<form class="form-signin" action="send.php" method = "post" role="form">
+				<h2>Skicka ett medelande</h2>
+				<div class="form-group">
+					<input type="text" name="name" class="form-control" placeholder="Name">
+				</div>
+				<div class="form-group">
+					<input type="email" name="name" class="form-control" placeholder="Email">
+				</div>
+				<div class="form-group">
+					<textarea name="msg" class="form-control" placeholder="Message"></textarea>
+				</div>
+				<div class="form-group text-center">
+					<button type="submit" class="btn btn-lg block btn-primary">Skicka</button>
+				</div>	
+			</form>
+		</div>
+	</div>
 END;
 	echo $content;
 ?>

@@ -31,7 +31,8 @@ if(isset($_POST['username']))
         $_SESSION['username'] = $row['username'];
         $_SESSION['password'] = $row['password'];
         $_SESSION['timeout']  = time();
-		header('Location:index.php');
+		$_SESSION['location'] = 'index.php';
+		header('Location:'.$_SESSION['location']);
     } 
 	else
 	{

@@ -55,16 +55,16 @@ END;
         <li><a href="product.php">Products</a></li>  
 END;
     }
-	if (strcmp("about.php", $url) === 0)
+	if (strcmp("contact.php", $url) === 0)
 	{
 		$content .= <<<END
-		<li class="active"><a href="about.php">Contact us</a></li>
+		<li class="active"><a href="contact.php">Contact us</a></li>
 END;
 	}
 	else
 	{
 		$content .= <<<END
-		<li><a href="about.php">Contact us</a></li>  
+		<li><a href="contact.php">Contact us</a></li>  
 END;
 	}
 if (isset($_SESSION['user_id'])) 
@@ -86,11 +86,11 @@ END;
 		
 	}
     $content .= <<<END
+       <li><a href="user_detail.php?id={$_SESSION['user_id']}"><em>{$_SESSION['username']}</em></a></li>
        <li><a href="logout.php">Logout</a></li>
 	</ul>
 		</div><!--/.nav-collapse -->
     </div><!--/.container-fluid -->
-        <p>Inloggad som <a href="user_detail.php?id={$_SESSION['user_id']}">{$_SESSION['username']}</a></p>
 END;
 } 
 else 
