@@ -16,6 +16,7 @@
 <?php
 include('template.php');
     $content = <<<END
+<div class="container">
 <div class="row">
     <div class="col-sm-2" style="background-color:lavender;">.col-sm-4</div>
     <div class="col-sm-7" style="background-color:lavenderblush;">
@@ -84,33 +85,9 @@ include('template.php');
                 </div>
     </div>
     <div class="col-sm-3" style="background-color:lavender;">
-END;
-	
-	if (!isset($_SESSION['user_id'])) {
-		$content .= <<<END
-		<div class="well">
-			<form role="form" class="form-signin" action="login.php" method="POST">
-				<div class="form-group">
-					 <label for="inputUsername">Username</label>
-					 <input type="text" id="inputUsername" class="form-control" placeholder="User Name" name="username" required autofocus>
-				</div>
-				<div class="form-group">
-					<label for="inputPassword">Password</label>
-					<input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password" required>
-				</div>
-				<div class="form-group">
-					 <button class="btn btn-md btn-primary btn-block" type="submit">Sign in</button>	
-				</div>
-			</form>
-				<a href="login.php?id=1"><button class="btn btn-primary">Register</button></a>
-			<hr>
-        </div><!--end of well class--> 
-END;
-	}
-	$content .= <<<END
     </div><!--End of col3-->
 </div>
-        
+</div><!--end of container-->        
 END;
     echo $content;
 

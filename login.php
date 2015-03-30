@@ -57,7 +57,7 @@ END;
 		</ul>	
 			<div id="my-tab-content" class="tab-content">
 				<div class="tab-pane" id="loginTab">
-					<form class="form-signin" role="form" action="index.php" method="POST">
+					<form class="form-signin" role="form" action="login.php" method="POST">
 							<h2 class="form-signin-heading">Please sign in</h2>
 							<div class="form-group">
 								<label for="inputEmail">Email address</label>
