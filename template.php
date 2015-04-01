@@ -102,7 +102,7 @@ else
 		</ul>
 		</div><!--/.nav-collapse -->
     </div><!--/.container-fluid -->
-		<form class="form-inline" role="form" action="login.php" method="post">
+		<form class="navbar-form navbar-left" role="form" action="login.php" method="post">
 		  <div class="form-group">
 			<label for="email">Email address:</label>
 			<input type="text" class="form-control" id="email" name="username">

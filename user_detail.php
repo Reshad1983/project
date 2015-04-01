@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html>
 	<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<!-- Lat est compiled and minified CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-	<!-- Custom styles for this template -->
-	<link href="signin.css" rel="stylesheet">
-	<link rel="icon" href="http://getbootstrap.com/favicon.ico">
-	<title>Login</title>	</head>	<body class="container">
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- Lat est compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+		<!-- Custom styles for this template -->
+		<link href="signin.css" rel="stylesheet">
+		<link rel="icon" href="http://getbootstrap.com/favicon.ico">
+		<title>Login</title>	
+	</head>	
+	<body class="container">
+		<div class="row">
 	<?php	
 	include('template.php');
 	$updated = 0;
@@ -82,8 +85,20 @@ END;
 	$sth->execute();
 	$row = $sth->fetch(PDO::FETCH_ASSOC);
 	$array = array_values($row);
+	
 	$content = <<<END
-	<div id="userinfo">
+	<div class="col-md-2 well">
+		<div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+			<button type="button" class="btn btn-lg btn-info">Account setting</button>
+			<button type="button" class="btn btn-lg btn-info">Adresses</button>
+			<button type="button" class="btn btn-lg btn-info">Contact</button>
+			<button type="button" class="btn btn-default">Button</button>
+		</div><!--End of btn-group-vertical-->
+	</div>
+END;
+	echo $content;
+	$content = <<<END
+	<div class="col-md-6 well" id="userinfo">		
 		<h3>User information</h3>
 		<p id="user">User name: {$array[1]}</p><br />
 		<p ="passsword"> Password:{$array[2]}</p><br />
@@ -91,14 +106,15 @@ END;
 		<p id="lastname">Family name: {$array[4]}</p><br />
 		<p id="address">Address: {$array[5]}</p><br />
 		<p id="email">Email: </p><br />
-		<button class="btn btn-primary" id="updateInfo">Update</button>
-	</div>		
-	<hr>
+		<button class="btn btn-primary" id="updateInfo">Update</button>	
+		<hr>
+	</div><!--End of col6-->
 END;
 	echo $content;	
 	}
 
 ?>
+	</div><!--end of row class-->
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="js/jquery.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
