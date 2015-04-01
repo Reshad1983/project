@@ -12,7 +12,69 @@
 	<title>Login</title>	</head>	<body class="container">
 	<?php	
 	include('template.php');
+	$updated = 0;
+	if(isset($_POST["editusername"]) or 
+	isset($_POST["passwordedit"]) or
+	isset($_POST["firstnameedit"]) or
+	isset($_POST["lastnameedit"]) or
+	isset($_POST["emailedit"]))
+	{
+		$sql = <<<END
+		UPDATE User 
+			SET username = '{$_POST['editusername']}',
+			fname = '{$_POST['firstnameedit']}' ,
+			lname = '{$_POST['lastnameedit']}' ,
+			address = '{$_POST['addressedit']}'
+			WHERE user_id = {$_SESSION['user_id']};
+END;
+/*
+
+	if(isset($_POST["passwordedit"]))
+		{
+			if($_POST["passwordedit"] === $_POST["passwordedit2"])
+			{
+				$sql .= <<<END
+				SET paessword = {$_POST['passwordedit']}
+END;
+			}
+		}
+		if(isset($_SESSION["emailedit"]))
+		{
+			$sql .= <<<END
+			SET lname = {$_POST['emailedit']}
+END;
+		}
+		*/
+		$sth = $dbh->prepare($sql);
+		$sth->execute();
+		
+		$sql  = "SELECT  contact_id 
+		FROM User
+		WHERE User_id = {$_SESSION['user_id']}" ;
+		$sth = $dbh -> prepare($sql);
+		$sth -> execute();
+		$row = $sth -> fetch(PDO::FETCH_ASSOC);
+		$array = array_values($row);
+		$sql = <<<END
+		UPDATE contact
+			SET email = '{$_POST['emailedit']}'
+			WHERE contact_id = {$array[0]};
+END;
+		try
+		{
+			$sth = $dbh->prepare($sql);
+			$sth->execute();
+		}
+		catch(PDOException $e)
+		{
+			echo $e->getMessage();
+		}
+		$updated = 1;
+	}
 	if(isset($_SESSION["user_id"])){
+		if($updated === 1){
+			echo "<h1 class='alert alert-success' id='temp'>User information has been updated</h1>";
+		}
  	$sql  = "SELECT  * 
 			FROM User
             WHERE User_id = {$_SESSION['user_id']}" ;
@@ -21,13 +83,15 @@
 	$row = $sth->fetch(PDO::FETCH_ASSOC);
 	$array = array_values($row);
 	$content = <<<END
-	<div>
+	<div id="userinfo">
 		<h3>User information</h3>
-		<p>User id: {$array[0]}</p><br />
-		<p>User name: {$array[1]}</p><br />
-		<p>First name:{$array[2]}</p><br />
-		<p>Last name: {$array[3]}</p><br />
-		<p>Email: {$array[4]}</p><br />
+		<p id="user">User name: {$array[1]}</p><br />
+		<p ="passsword"> Password:{$array[2]}</p><br />
+		<p id="firstname">First name: {$array[3]}</p><br />
+		<p id="lastname">Family name: {$array[4]}</p><br />
+		<p id="address">Address: {$array[5]}</p><br />
+		<p id="email">Email: </p><br />
+		<button class="btn btn-primary" id="updateInfo">Update</button>
 	</div>		
 	<hr>
 END;
@@ -46,5 +110,6 @@ END;
 	<script src="js/bootstrap-datepicker.js"></script>
 	<script src="js/getdate.js"></script>
 	<script language='JavaScript' src='script4.js' type='text/javascript'></script>
+	<script language='JavaScript' src='js/user_update.js' type='text/javascript'></script>
 	</body>
 </html>		

@@ -17,7 +17,7 @@ $url     = basename($_SERVER['REQUEST_URI'], '?' . $_SERVER['QUERY_STRING']);
 $content = <<<END
    <div>
 		<!-- Static navbar -->
-		<nav class="navbar navbar-default navbar-inverse">
+		<nav class="navbar navbar-default">
 		<div class="container-fluid">
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
