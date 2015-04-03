@@ -1,26 +1,27 @@
-<meta charset="utf-8">
 <?php
-session_name("Webbshop");
-session_start();
-
 try 
 {
-    $dbh = new PDO('mysql:host=localhost:3307;dbname=reshaddatabase', 'root', '');
-	$dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $dbh = new PDO('mysql:host=localhost;dbname=reshbrkz_project', 'reshbrkz', 'dUB-Y-MKey4G3');
+	$dbh -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } 
 catch (PDOException $e) 
 {
     print "Error!: " . $e->getMessage() . "<br/>";
     die();
 }
+if(!isset($_SESSION))
+{
+	session_name("Webbshop");
+	session_start();
+}
 $url     = basename($_SERVER['REQUEST_URI'], '?' . $_SERVER['QUERY_STRING']);
-$content = <<<END
+$navbar = <<<END
    <div>
 		<!-- Static navbar -->
 		<nav class="navbar navbar-default">
 		<div class="container-fluid">
 		<div class="navbar-header">
-			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+			<button type="button" class="navbar-toggle navbar-embossed collapsed navbar-fixed-top" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
 				<span class="sr-only">Toggle navigation</span>
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
@@ -33,37 +34,37 @@ $content = <<<END
 END;
     if (strcmp("index.php", $url) === 0) 
 	{
-        $content .= <<<END
+        $navbar .= <<<END
            <li class="active"><a href="index.php">Home</a></li>
 END;
     }
 	else
 	{
-        $content .= <<<END
+        $navbar .= <<<END
            <li><a href="index.php">Home</a></li>
 END;
     }
 	if (strcmp("product.php", $url) === 0) 
 	{
-        $content .= <<<END
+        $navbar .= <<<END
         <li class="active"><a href="product.php">Products</a></li> 
 END;
     } 
 	else
 	{
-        $content .= <<<END
+        $navbar .= <<<END
         <li><a href="product.php">Products</a></li>  
 END;
     }
 	if (strcmp("contact.php", $url) === 0)
 	{
-		$content .= <<<END
+		$navbar .= <<<END
 		<li class="active"><a href="contact.php">Contact us</a></li>
 END;
 	}
 	else
 	{
-		$content .= <<<END
+		$navbar .= <<<END
 		<li><a href="contact.php">Contact us</a></li>  
 END;
 	}
@@ -73,19 +74,19 @@ if (isset($_SESSION['user_id']))
 	{
 	    if (strcmp("add_products.php", $url) === 0) 
 		{
-			$content .= <<<END
+			$navbar .= <<<END
 			<li  class="active"><a href="add_products.php">Add new product</a></li>
 END;
 		}
 		else 
 		{
-			$content .= <<<END
+			$navbar .= <<<END
            <li><a href="add_products.php">Add new product</a></li>
 END;
 		}
 		
 	}
-    $content .= <<<END
+    $navbar .= <<<END
        <li><a href="user_detail.php?id={$_SESSION['user_id']}"><em>{$_SESSION['username']}</em></a></li>
        <li><a href="logout.php">Logout</a></li>
 	</ul>
@@ -97,7 +98,7 @@ else
 {
     if (strcmp("login.php", $url) != 0)
 	{
-        $content .= <<<END
+        $navbar .= <<<END
 			<li><a href="login.php?id=1">Register</a></li>
 		</ul>
 		</div><!--/.nav-collapse -->
@@ -120,9 +121,8 @@ else
 END;
     } 
 }
-        $content .= <<<END
+        $navbar .= <<<END
 			</nav>
         </div>  
 END;
-echo $content;
-?>  
+?>

@@ -92,21 +92,26 @@ END;
 			<button type="button" class="btn btn-lg btn-info">Account setting</button>
 			<button type="button" class="btn btn-lg btn-info">Adresses</button>
 			<button type="button" class="btn btn-lg btn-info">Contact</button>
-			<button type="button" class="btn btn-default">Button</button>
 		</div><!--End of btn-group-vertical-->
 	</div>
 END;
 	echo $content;
 	$content = <<<END
-	<div class="col-md-6 well" id="userinfo">		
-		<h3>User information</h3>
-		<p id="user">User name: {$array[1]}</p><br />
-		<p ="passsword"> Password:{$array[2]}</p><br />
-		<p id="firstname">First name: {$array[3]}</p><br />
-		<p id="lastname">Family name: {$array[4]}</p><br />
-		<p id="address">Address: {$array[5]}</p><br />
-		<p id="email">Email: </p><br />
-		<button class="btn btn-primary" id="updateInfo">Update</button>	
+	<div class="col-md-6 well" id="userinfo">
+		<div class="panel panel-primary">
+		  <div class="panel-heading">
+			<h3 class="panel-title">Account information</h3>
+		  </div>
+			<!-- List group -->
+		  <ul class="list-group">
+			<li id="user" class="list-group-item">User name: {$array[1]}</li>
+			<li id="passsword" class="list-group-item">Password:{$array[2]}</li>
+			<li id="firstname" class="list-group-item">First name: {$array[3]}</li>
+			<li id="lastname" class="list-group-item">Family name: {$array[4]}</li>
+			<li id="address" class="list-group-item">Address: {$array[5]}</li>
+		  </ul>
+		  <button class="btn btn-primary" id="updateInfo">Update</button>	
+		</div>
 		<hr>
 	</div><!--End of col6-->
 END;
